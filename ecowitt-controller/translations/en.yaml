@@ -1,0 +1,48 @@
+configuration:
+  mqtt_host:
+    name: MQTT Host
+    description: >-
+      MQTT broker hostname or IP. Leave empty to auto-discover from
+      the Mosquitto add-on.
+  mqtt_port:
+    name: MQTT Port
+    description: MQTT broker port.
+  mqtt_user:
+    name: MQTT Username
+    description: Leave empty for auto-discovery from Mosquitto add-on.
+  mqtt_password:
+    name: MQTT Password
+    description: Leave empty for auto-discovery from Mosquitto add-on.
+  mqtt_base_topic:
+    name: MQTT Base Topic
+    description: Root MQTT topic prefix for all published messages.
+  mqtt_client_id:
+    name: MQTT Client ID
+    description: MQTT client identifier.
+  mqtt_use_311:
+    name: Use MQTT 3.1.1
+    description: >-
+      Use MQTT 3.1.1 instead of MQTT 5.0. Only enable if your broker
+      does not support MQTT 5.0.
+  polling_interval:
+    name: Polling Interval
+    description: >-
+      Interval in seconds for polling subdevice data from gateways.
+  unit:
+    name: Units
+    description: Unit system for sensor values.
+  precision:
+    name: Decimal Precision
+    description: Number of decimal places for floating-point sensor values.
+  homeassistant_discovery:
+    name: Home Assistant Discovery
+    description: Publish MQTT auto-discovery messages for Home Assistant.
+  log_level:
+    name: Log Level
+    description: Application log verbosity.
+  gateways:
+    name: Gateways
+    description: >-
+      List of Ecowitt gateways. Each needs a name, IP address, and
+      whether to poll for IoT subdevices (AC1100, WFC01, WFC02).
+      Subdevice polling only works with GW1200, GW2000, and GW3000.
