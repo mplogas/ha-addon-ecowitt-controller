@@ -34,9 +34,6 @@ configuration:
   precision:
     name: Decimal Precision
     description: Number of decimal places for floating-point sensor values.
-  homeassistant_discovery:
-    name: Home Assistant Discovery
-    description: Publish MQTT auto-discovery messages for Home Assistant.
   log_level:
     name: Log Level
     description: Application log verbosity.

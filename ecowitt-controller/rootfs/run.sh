@@ -16,7 +16,6 @@ USE_311=$(jq '.mqtt_use_311 // false' "$OPTIONS")
 POLLING=$(jq '.polling_interval // 30' "$OPTIONS")
 UNIT=$(jq -r '.unit // "metric"' "$OPTIONS")
 PRECISION=$(jq '.precision // 2' "$OPTIONS")
-HA_DISCOVERY=$(jq '.homeassistant_discovery // true' "$OPTIONS")
 LOG_LEVEL=$(jq -r '.log_level // "Warning"' "$OPTIONS")
 GATEWAYS=$(jq -c '.gateways // []' "$OPTIONS")
 
@@ -65,7 +64,7 @@ cat > /config/appsettings.json <<EOF
   "controller": {
     "precision": ${PRECISION},
     "unit": "${UNIT}",
-    "homeassistantdiscovery": ${HA_DISCOVERY}
+    "homeassistantdiscovery": true
   }
 }
 EOF

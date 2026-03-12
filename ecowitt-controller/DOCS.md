@@ -35,7 +35,6 @@ Add your gateway(s) under **Gateways** with a name and IP address. Enable **Subd
 | `polling_interval` | `30` | Subdevice polling interval in seconds |
 | `unit` | `metric` | Unit system (`metric` or `imperial`) |
 | `precision` | `2` | Decimal places for sensor values |
-| `homeassistant_discovery` | `true` | Publish MQTT discovery messages |
 | `log_level` | `Warning` | Log verbosity |
 
 ## Support

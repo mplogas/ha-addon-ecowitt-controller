@@ -1,5 +1,5 @@
 name: Ecowitt Controller
-version: "2.0.3-6"
+version: "2.0.3-7"
 slug: ecowitt-controller
 description: >-
   Bridge Ecowitt weather stations and IoT subdevices (AC1100, WFC01, WFC02)
@@ -35,7 +35,6 @@ options:
   polling_interval: 30
   unit: metric
   precision: 2
-  homeassistant_discovery: true
   log_level: Warning
   gateways:
     - name: ""
@@ -53,7 +52,6 @@ schema:
   polling_interval: int(10,3600)
   unit: list(metric|imperial)
   precision: int(0,6)
-  homeassistant_discovery: bool
   log_level: list(Verbose|Debug|Information|Warning|Error|Fatal)
   gateways:
     - name: str
