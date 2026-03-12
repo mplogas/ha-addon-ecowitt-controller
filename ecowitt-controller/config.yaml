@@ -1,5 +1,5 @@
 name: Ecowitt Controller
-version: "2.0.3-2"
+version: "2.0.3-3"
 slug: ecowitt-controller
 description: >-
   Bridge Ecowitt weather stations and IoT subdevices (AC1100, WFC01, WFC02)
@@ -18,8 +18,7 @@ ports:
 ports_description:
   8080/tcp: Ecowitt weather data receiver
 
-discovery:
-  - mqtt
+hassio_api: true
 services:
   - mqtt:want
 
