@@ -1,5 +1,5 @@
 name: Ecowitt Controller
-version: "2.0.3-5"
+version: "2.0.3-6"
 slug: ecowitt-controller
 description: >-
   Bridge Ecowitt weather stations and IoT subdevices (AC1100, WFC01, WFC02)
