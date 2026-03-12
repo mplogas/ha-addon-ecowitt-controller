@@ -21,14 +21,22 @@ LOG_LEVEL=$(jq -r '.log_level // "Warning"' "$OPTIONS")
 GATEWAYS=$(jq -c '.gateways // []' "$OPTIONS")
 
 # Check for Mosquitto service discovery via Supervisor API
-if [ -n "$SUPERVISOR_TOKEN" ] && [ -z "$MQTT_HOST" ]; then
-    MQTT_INFO=$(curl -s -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" http://supervisor/services/mqtt 2>/dev/null || true)
-    if echo "$MQTT_INFO" | jq -e '.data.host' > /dev/null 2>&1; then
-        echo "Mosquitto add-on detected, using auto-discovered credentials"
-        MQTT_HOST=$(echo "$MQTT_INFO" | jq -r '.data.host')
-        MQTT_PORT=$(echo "$MQTT_INFO" | jq -r '.data.port')
-        MQTT_USER=$(echo "$MQTT_INFO" | jq -r '.data.username')
-        MQTT_PASSWORD=$(echo "$MQTT_INFO" | jq -r '.data.password')
+if [ -z "$MQTT_HOST" ]; then
+    if [ -z "$SUPERVISOR_TOKEN" ]; then
+        echo "WARN: SUPERVISOR_TOKEN is not set, cannot auto-discover Mosquitto"
+    else
+        echo "Attempting Mosquitto auto-discovery via Supervisor API..."
+        MQTT_INFO=$(curl -s -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" http://supervisor/services/mqtt 2>&1 || true)
+        echo "Supervisor API response: ${MQTT_INFO}"
+        if echo "$MQTT_INFO" | jq -e '.data.host' > /dev/null 2>&1; then
+            echo "Mosquitto add-on detected, using auto-discovered credentials"
+            MQTT_HOST=$(echo "$MQTT_INFO" | jq -r '.data.host')
+            MQTT_PORT=$(echo "$MQTT_INFO" | jq -r '.data.port')
+            MQTT_USER=$(echo "$MQTT_INFO" | jq -r '.data.username')
+            MQTT_PASSWORD=$(echo "$MQTT_INFO" | jq -r '.data.password')
+        else
+            echo "WARN: Could not parse MQTT service info from Supervisor API"
+        fi
     fi
 fi
 
