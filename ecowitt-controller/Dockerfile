@@ -1,5 +1,5 @@
 ARG BUILD_VERSION
-ARG BASE_IMAGE_VERSION=2.0.3
+ARG BASE_IMAGE_VERSION=2.0.6
 FROM mplogas/ecowitt-controller:${BASE_IMAGE_VERSION}
 
 RUN apt-get update && apt-get install -y --no-install-recommends jq curl && rm -rf /var/lib/apt/lists/*
