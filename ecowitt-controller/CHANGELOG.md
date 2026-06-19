@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.6 
+
+- Exposes the Ecowitt subdevice "run for a duration / volume" capability as first-class Home Assistant entities
+- multiple fixes
+
 ## 2.0.3-7
 
 - Fix Mosquitto auto-discovery (enable Supervisor API access, add curl)
